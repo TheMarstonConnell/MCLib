@@ -30,7 +30,7 @@ public class Drawable extends Rectangle {
 	
 	public void setImage(String name, Class resourceGrabber) {
 		
-		InputStream is = resourceGrabber.getResourceAsStream(name + "/" + name + ".png");
+		InputStream is = resourceGrabber.getResourceAsStream("/" + name + "/" + name + ".png");
 		try {
 			currentImage = ImageIO.read(is);
 		} catch (IOException e) {
