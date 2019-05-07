@@ -7,6 +7,9 @@ import java.util.List;
 public class DrawingLayer {
 	List<Drawable> drawings;
 
+	public List<Drawable> getDrawables(){
+		return drawings;
+	}
 	
 	public DrawingLayer() {
 		drawings = new ArrayList<Drawable>();
@@ -29,6 +32,15 @@ public class DrawingLayer {
 			for (int x = 0; x < drawings.size(); x++) {
 				Drawable d = drawings.get(x);
 				g.drawImage(d.currentImage, d.x, d.y, d.width, d.height, null);
+			}
+		}
+	}
+
+	public void draw(Graphics2D g, int leftOffset, int topOffset) {
+		if (!drawings.isEmpty()) {
+			for (int x = 0; x < drawings.size(); x++) {
+				Drawable d = drawings.get(x);
+				g.drawImage(d.currentImage, d.x + leftOffset, d.y + topOffset, d.width, d.height, null);
 			}
 		}
 	}

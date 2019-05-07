@@ -1,5 +1,6 @@
 package xyz.marstonconnell.graphics;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -56,6 +58,20 @@ public class GraphicsFrame extends JFrame {
 		this.setSize(0, 0);
 
 		init();
+		
+	}
+	
+	public int getInnerWidth(){
+		return this.getWidth() - getInsets().left - getInsets().right;
+	}
+	
+	public int getInnerHeight(){
+		return this.getHeight() - getInsets().top - getInsets().bottom;
+	}
+	
+	public void clearDrawings(Color c) {
+		graphics.setColor(c);
+		graphics.fillRect(0, 0, getWidth(), getHeight());
 	}
 
 	/**

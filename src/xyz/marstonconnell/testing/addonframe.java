@@ -17,8 +17,11 @@ public class addonframe extends GraphicsFrame {
 	@Override
 	public void redraw() {
 		super.redraw();
+		
+		clearDrawings(Color.white);
+		
 		if (lc != null) {
-			lc.draw(graphics);
+			lc.draw(graphics, this);
 		}
 
 	}
