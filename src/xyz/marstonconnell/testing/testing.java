@@ -20,22 +20,21 @@ public class testing {
 		DrawingLayer dl = new DrawingLayer();
 
 		Entity draw = new Entity(0, 0, 100, dl);
-		Entity draw2 = new Entity(300, 300, 200, dl); 
-		
-		
-		draw.setImage("cool", testing.class);
-		draw2.setImage("cool", testing.class);
-		
+		Entity draw2 = new Entity(300, 300, 200, dl);
+
+		draw.createState("cool", 2, 0.5, testing.class);
+		draw2.createState("cool", 2, 0.8, testing.class);
+
+		draw.setState("cool");
+		draw2.setState("cool");
 
 		lc.insertLayer(0, dl);
-				
-
 
 		Timer t = new Timer(1000 / 60, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (af.upDown) {
 					draw2.moveUp(1, dl.getDrawables());
 				}
@@ -48,7 +47,7 @@ public class testing {
 				if (af.leftDown) {
 					draw2.moveLeft(1, dl.getDrawables());
 				}
-				
+
 				if (af.wDown) {
 					draw.moveUp(1, dl.getDrawables());
 				}
@@ -61,9 +60,9 @@ public class testing {
 				if (af.aDown) {
 					draw.moveLeft(1, dl.getDrawables());
 				}
-				
+
 				af.lc = lc;
-				
+
 			}
 		});
 
