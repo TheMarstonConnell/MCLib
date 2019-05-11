@@ -18,7 +18,7 @@ public class Entity extends AnimatedDrawable {
 	}
 
 	public Entity(int x, int y, int size, DrawingLayer drawingLayer) {
-		super(x, y, size, drawingLayer);
+		this(x, y, size, size, drawingLayer);
 	}
 
 	public void moveLeft(int delta, List<Drawable> canCollideWith) {
