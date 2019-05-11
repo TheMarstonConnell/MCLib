@@ -9,9 +9,9 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 public class Drawable extends Rectangle {
-	
+
 	Image currentImage;
-	
+
 	public void moveLeft(int delta) {
 		this.x = this.x - delta;
 	}
@@ -27,9 +27,9 @@ public class Drawable extends Rectangle {
 	public void moveDown(int delta) {
 		this.y = this.y + delta;
 	}
-	
+
 	public void setImage(String name, Class resourceGrabber) {
-		
+
 		InputStream is = resourceGrabber.getResourceAsStream("/" + name + "/" + name + ".png");
 		try {
 			currentImage = ImageIO.read(is);
@@ -38,11 +38,16 @@ public class Drawable extends Rectangle {
 		}
 	}
 
+	public void setImage(Image image) {
+
+		currentImage = image;
+	}
+
 	public Drawable(int x, int y, int width, int height, DrawingLayer drawingLayer) {
 		super(x, y, width, height);
 		drawingLayer.add(this);
 	}
-	
+
 	public Drawable(int x, int y, int size, DrawingLayer drawingLayer) {
 		super(x, y, size, size);
 		drawingLayer.add(this);

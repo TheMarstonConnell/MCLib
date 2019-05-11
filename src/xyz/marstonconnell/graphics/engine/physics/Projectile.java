@@ -14,8 +14,6 @@ public class Projectile extends Entity {
 	private int speed = 0;
 	Entity owner;
 
-	private ActionListener action;
-
 	public Projectile(int x, int y, int size, DrawingLayer drawingLayer, Entity owner) {
 		super(x, y, size, drawingLayer);
 		this.owner = owner;
@@ -57,9 +55,6 @@ public class Projectile extends Entity {
 		super.moveDown(deltaY);
 	}
 
-	public void addActionListener(ActionListener action) {
-
-		this.action = action;
-	}
+	
 
 }
