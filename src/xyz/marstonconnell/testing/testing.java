@@ -7,6 +7,7 @@ import javax.swing.Timer;
 
 import xyz.marstonconnell.graphics.engine.Drawable;
 import xyz.marstonconnell.graphics.engine.DrawingLayer;
+import xyz.marstonconnell.graphics.engine.EngineFrame;
 import xyz.marstonconnell.graphics.engine.LayerContainer;
 import xyz.marstonconnell.graphics.engine.physics.Entity;
 import xyz.marstonconnell.graphics.engine.physics.Projectile;
@@ -15,20 +16,22 @@ public class testing {
 
 	public static void main(String[] args) {
 
-		addonframe af = new addonframe();
-		LayerContainer lc = new LayerContainer();
+		EngineFrame af = new EngineFrame(800, 800, "");
 		DrawingLayer dl = new DrawingLayer();
 
 		Entity draw = new Entity(0, 0, 100, dl);
 		Entity draw2 = new Entity(300, 300, 200, dl);
 
-		draw.createState("cool", 2, 0.5, testing.class);
-		draw2.createState("cool", 2, 0.8, testing.class);
+		draw.createState("still", 2, 0.5, testing.class);
+		draw2.createState("still", 2, 0.8, testing.class);
 
-		draw.setState("cool");
-		draw2.setState("cool");
+		draw.createState("walk", 5, 0.2, testing.class);
+		draw2.createState("walk", 5, 0.2, testing.class);
+		
+		draw.setState("still");
+		draw2.setState("still");
 
-		lc.insertLayer(0, dl);
+		af.getLayerContainer().insertLayer(0, dl);
 
 		Timer t = new Timer(1000 / 60, new ActionListener() {
 
@@ -47,6 +50,20 @@ public class testing {
 				if (af.leftDown) {
 					draw2.moveLeft(1, dl.getDrawables());
 				}
+				
+				if (af.upDown || af.downDown || af.rightDown || af.leftDown) {
+					if(draw2.getState().equals("still")) {
+						draw2.setState("walk");
+						
+					}
+				}else {
+					if(draw2.getState().equals("walk")) {
+						draw2.setState("still");
+						
+					}
+				}
+				
+				
 
 				if (af.wDown) {
 					draw.moveUp(1, dl.getDrawables());
@@ -60,8 +77,18 @@ public class testing {
 				if (af.aDown) {
 					draw.moveLeft(1, dl.getDrawables());
 				}
-
-				af.lc = lc;
+				
+				if (af.aDown|| af.wDown || af.dDown || af.sDown) {
+					if(draw.getState().equals("still")) {
+						draw.setState("walk");
+						
+					}
+				}else {
+					if(draw.getState().equals("walk")) {
+						draw.setState("still");
+						
+					}
+				}
 
 			}
 		});

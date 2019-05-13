@@ -24,7 +24,11 @@ public class AnimatedDrawable extends Drawable {
 		super(x, y, width, height, drawingLayer);
 		states = new HashMap<String, AnimationState>();
 		createLoop(refreshTime);
-		currentState = new AnimationState(new Image[0], 1);
+		currentState = new AnimationState(new Image[0], 1, null);
+	}
+	
+	public String getState() {
+		return currentState.getName();
 	}
 	
 	public void createLoop(double refreshTime) {
@@ -65,10 +69,11 @@ public class AnimatedDrawable extends Drawable {
 				e.printStackTrace();
 			}
 		}
-		states.put(name, new AnimationState(state, refreshTime));
+		states.put(name, new AnimationState(state, refreshTime, name));
 	}
 	
 	public void setState(String name) {
+		animationLoop.stop();
 		currentState = states.get(name);
 		currentImage = currentState.getImages()[0];
 		
