@@ -27,20 +27,20 @@ public class DrawingLayer {
 		drawings.remove(toRemove);
 	}
 
-	public void draw(Graphics2D g) {
+	public void draw(Graphics2D g, double resizeRate) {
 		if (!drawings.isEmpty()) {
 			for (int x = 0; x < drawings.size(); x++) {
 				Drawable d = drawings.get(x);
-				g.drawImage(d.currentImage, d.x, d.y, d.width, d.height, null);
+				g.drawImage(d.currentImage, (int)(d.x * resizeRate), (int)(d.y * resizeRate), (int)(d.width * resizeRate), (int)(d.height * resizeRate), null);
 			}
 		}
 	}
 
-	public void draw(Graphics2D g, int leftOffset, int topOffset) {
+	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate) {
 		if (!drawings.isEmpty()) {
 			for (int x = 0; x < drawings.size(); x++) {
 				Drawable d = drawings.get(x);
-				g.drawImage(d.currentImage, d.x + leftOffset, d.y + topOffset, d.width, d.height, null);
+				g.drawImage(d.currentImage, (int)(d.x * resizeRate) + leftOffset, (int)(d.y * resizeRate) + topOffset, (int)(d.width * resizeRate), (int)(d.height * resizeRate), null);
 			}
 		}
 	}

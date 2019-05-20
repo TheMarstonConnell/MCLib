@@ -11,13 +11,18 @@ import xyz.marstonconnell.graphics.GraphicsFrame;
 
 public class LayerContainer {
 	HashMap<Integer, DrawingLayer> layers;
-
-	public LayerContainer() {
+	public double resizeRate = 1;
+	public LayerContainer(double resizeRate) {
+		this.resizeRate = resizeRate;
 		layers = new HashMap<Integer, DrawingLayer>();
 	}
 	
 	public void insertLayer(int index, DrawingLayer dl) {
 		layers.put(index, dl);
+	}
+	
+	public void setResizeRate(double rate) {
+		this.resizeRate = rate;
 	}
 	
 	public void draw(Graphics2D g, GraphicsFrame f) {
@@ -28,7 +33,7 @@ public class LayerContainer {
 			Collections.sort(ls);
 			
 			for(int x = 0; x < ls.size(); x ++) {
-				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top);
+				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate);
 			}
 		}
 	}
@@ -41,7 +46,7 @@ public class LayerContainer {
 			Collections.sort(ls);
 			
 			for(int x = 0; x < ls.size(); x ++) {
-				layers.get(ls.get(x)).draw(g);
+				layers.get(ls.get(x)).draw(g, resizeRate);
 			}
 		}
 	}

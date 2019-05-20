@@ -47,6 +47,7 @@ public class GraphicsFrame extends JFrame {
 	/**
 	 * Key Variables
 	 */
+	
 
 	/**
 	 * Extend this class with a redraw method to create graphics.

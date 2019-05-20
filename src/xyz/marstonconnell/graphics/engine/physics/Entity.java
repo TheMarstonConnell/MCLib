@@ -28,11 +28,12 @@ public class Entity extends AnimatedDrawable {
 			if (canCollideWith.get(i) instanceof Entity)
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-					action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 
 					return;
 				}
 		}
+		
 		super.moveLeft(delta);
 	}
 
@@ -43,7 +44,7 @@ public class Entity extends AnimatedDrawable {
 			if (canCollideWith.get(i) instanceof Entity)
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-					action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 
 					return;
 				}
@@ -58,7 +59,7 @@ public class Entity extends AnimatedDrawable {
 			if (canCollideWith.get(i) instanceof Entity)
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-					action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 
 					return;
 				}
@@ -72,7 +73,7 @@ public class Entity extends AnimatedDrawable {
 		for (int i = 0; i < canCollideWith.size(); i++) {
 			if (canCollideWith.get(i) instanceof Entity)
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-					action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 					return;
 				}
 		}
