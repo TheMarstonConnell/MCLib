@@ -1,4 +1,4 @@
-package xyz.marstonconnell.graphics.engine;
+package xyz.marstonconnell.graphics.engine.drawing;
 
 import java.awt.Image;
 import java.awt.Rectangle;

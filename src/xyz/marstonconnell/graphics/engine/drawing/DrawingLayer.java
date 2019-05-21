@@ -1,4 +1,4 @@
-package xyz.marstonconnell.graphics.engine;
+package xyz.marstonconnell.graphics.engine.drawing;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;

@@ -3,6 +3,7 @@ package xyz.marstonconnell.graphics.engine;
 import java.awt.Color;
 
 import xyz.marstonconnell.graphics.GraphicsFrame;
+import xyz.marstonconnell.graphics.engine.drawing.LayerContainer;
 
 /**
  * Starting place for all engine drawing and handling.

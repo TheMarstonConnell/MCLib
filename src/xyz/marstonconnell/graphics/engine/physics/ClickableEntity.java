@@ -1,6 +1,6 @@
 package xyz.marstonconnell.graphics.engine.physics;
 
-import xyz.marstonconnell.graphics.engine.DrawingLayer;
+import xyz.marstonconnell.graphics.engine.drawing.DrawingLayer;
 
 public class ClickableEntity extends Entity {
 

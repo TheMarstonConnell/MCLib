@@ -44,9 +44,19 @@ public class GraphicsFrame extends JFrame {
 	public boolean downDown = false;
 	public boolean leftDown = false;
 	public boolean rightDown = false;
+	public boolean keysLocked = false;
+
 	/**
 	 * Key Variables
 	 */
+
+	public boolean isKeysLocked() {
+		return keysLocked;
+	}
+
+	public void setKeysLocked(boolean keysLocked) {
+		this.keysLocked = keysLocked;
+	}
 
 	/**
 	 * Extend this class with a redraw method to create graphics.
@@ -58,17 +68,17 @@ public class GraphicsFrame extends JFrame {
 		this.setSize(0, 0);
 
 		init();
-		
+
 	}
-	
-	public int getInnerWidth(){
+
+	public int getInnerWidth() {
 		return this.getWidth() - getInsets().left - getInsets().right;
 	}
-	
-	public int getInnerHeight(){
+
+	public int getInnerHeight() {
 		return this.getHeight() - getInsets().top - getInsets().bottom;
 	}
-	
+
 	public void clearDrawings(Color c) {
 		graphics.setColor(c);
 		graphics.fillRect(0, 0, getWidth(), getHeight());
@@ -175,41 +185,43 @@ public class GraphicsFrame extends JFrame {
 					aDown = false;
 				} else if (arg0.getKeyCode() == KeyEvent.VK_S) {
 					sDown = false;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_D) {
+				} else if (arg0.getKeyCode() == KeyEvent.VK_D) {
 					dDown = false;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_SPACE) {
+				} else if (arg0.getKeyCode() == KeyEvent.VK_SPACE) {
 					spaceDown = false;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_UP) {
+				} else if (arg0.getKeyCode() == KeyEvent.VK_UP) {
 					upDown = false;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
+				} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
 					downDown = false;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+				} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
 					leftDown = false;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
+				} else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
 					rightDown = false;
 				}
 			}
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				if (arg0.getKeyCode() == KeyEvent.VK_W) {
-					wDown = true;
-				} else if (arg0.getKeyCode() == KeyEvent.VK_A) {
-					aDown = true;
-				} else if (arg0.getKeyCode() == KeyEvent.VK_S) {
-					sDown = true;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_D) {
-					dDown = true;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_SPACE) {
-					spaceDown = true;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_UP) {
-					upDown = true;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
-					downDown = true;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
-					leftDown = true;
-				}else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
-					rightDown = true;
+				if (!keysLocked) {
+					if (arg0.getKeyCode() == KeyEvent.VK_W) {
+						wDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_A) {
+						aDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_S) {
+						sDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_D) {
+						dDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_SPACE) {
+						spaceDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_UP) {
+						upDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_DOWN) {
+						downDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_LEFT) {
+						leftDown = true;
+					} else if (arg0.getKeyCode() == KeyEvent.VK_RIGHT) {
+						rightDown = true;
+					}
 				}
 
 			}

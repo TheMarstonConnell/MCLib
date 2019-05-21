@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import xyz.marstonconnell.graphics.engine.Drawable;
-import xyz.marstonconnell.graphics.engine.DrawingLayer;
+import xyz.marstonconnell.graphics.engine.drawing.Drawable;
+import xyz.marstonconnell.graphics.engine.drawing.DrawingLayer;
 
 public class Projectile extends Entity {
 
