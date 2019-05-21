@@ -12,14 +12,20 @@ import xyz.marstonconnell.graphics.engine.drawing.LayerContainer;
  *
  */
 public class EngineFrame extends GraphicsFrame{
+	
+	public double resizeRate = 1;
 
 	private LayerContainer layerContainer;
 
 	public EngineFrame(int width, int height, String title) {
 		super(width, height, title);
-		setLayerContainer(new LayerContainer());
+		setLayerContainer(new LayerContainer(resizeRate));
 	}
 	
+	public void setResizeRate(double rate) {
+		this.resizeRate = rate;
+		this.getLayerContainer().setResizeRate(rate);
+	}
 	
 
 	@Override

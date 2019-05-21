@@ -49,6 +49,7 @@ public class GraphicsFrame extends JFrame {
 	/**
 	 * Key Variables
 	 */
+	
 
 	public boolean isKeysLocked() {
 		return keysLocked;
