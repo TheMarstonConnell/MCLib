@@ -82,8 +82,8 @@ public class TextDialog extends DrawingLayer {
 	}
 
 	@Override
-	public void draw(Graphics2D g, int leftOffset, int topOffset) {
-		super.draw(g);
+	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate) {
+		super.draw(g, resizeRate);
 		g.setFont(font);
 
 		String textToDraw = WordUtils.wrap(text.substring(0, length), width / g.getFontMetrics(font).charWidth('n'));

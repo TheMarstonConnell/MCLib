@@ -21,21 +21,23 @@ public class ChoiceDialog extends TextDialog {
 	}
 
 	@Override
-	public void draw(Graphics2D g, int leftOffset, int topOffset) {
-		super.draw(g);
+	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate) {
+		super.draw(g, resizeRate);
 		g.setFont(font);
 
 		String textToDraw = WordUtils.wrap(text.substring(0, length), width / g.getFontMetrics(font).charWidth('n'));
 
 		g.setColor(Color.black);
-		g.fillRect(x, y + topOffset, width, height);
+		g.fillRect((int)(x * resizeRate), (int)(y * resizeRate) + topOffset, (int)(width * resizeRate), (int)(height * resizeRate));
 		g.setColor(Color.white);
 
 		String[] lines = textToDraw.split("\n");
 		for (int i = 0; i < lines.length; i++) {
-			g.drawString(lines[i], x + leftOffset, y + topOffset + g.getFontMetrics().getHeight() * (i + 1));
+			g.drawString(lines[i], (int)(x * resizeRate) + leftOffset, (int)(y * resizeRate) + topOffset + (int)(g.getFontMetrics().getHeight() * (i + 1) * resizeRate));
 
 		}
+		
+		//TODO Finish
 
 		if (name != null) {
 			int nameWidth = g.getFontMetrics(font).stringWidth(name);

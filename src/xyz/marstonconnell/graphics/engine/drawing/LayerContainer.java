@@ -20,7 +20,6 @@ public class LayerContainer {
 	public void insertLayer(int index, DrawingLayer dl) {
 		layers.put(index, dl);
 	}
-<<<<<<< HEAD:src/xyz/marstonconnell/graphics/engine/drawing/LayerContainer.java
 
 	public void removeLayer(int index) {
 		layers.remove(index);
@@ -36,28 +35,24 @@ public class LayerContainer {
 		return -1;
 	}
 
-=======
 	
 	public void setResizeRate(double rate) {
 		this.resizeRate = rate;
 	}
 	
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c:src/xyz/marstonconnell/graphics/engine/LayerContainer.java
 	public void draw(Graphics2D g, GraphicsFrame f) {
 		if (!layers.isEmpty()) {
 
 			Set<Integer> s = layers.keySet();
 			List<Integer> ls = new ArrayList<Integer>(s);
 			Collections.sort(ls);
-<<<<<<< HEAD:src/xyz/marstonconnell/graphics/engine/drawing/LayerContainer.java
 
 			for (int x = 0; x < ls.size(); x++) {
-				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top);
-=======
+				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate);
+			}
 			
 			for(int x = 0; x < ls.size(); x ++) {
 				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate);
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c:src/xyz/marstonconnell/graphics/engine/LayerContainer.java
 			}
 		}
 	}
@@ -68,15 +63,13 @@ public class LayerContainer {
 			Set<Integer> s = layers.keySet();
 			List<Integer> ls = new ArrayList<Integer>(s);
 			Collections.sort(ls);
-<<<<<<< HEAD:src/xyz/marstonconnell/graphics/engine/drawing/LayerContainer.java
 
 			for (int x = 0; x < ls.size(); x++) {
-				layers.get(ls.get(x)).draw(g);
-=======
+				layers.get(ls.get(x)).draw(g, resizeRate);
+			}
 			
 			for(int x = 0; x < ls.size(); x ++) {
 				layers.get(ls.get(x)).draw(g, resizeRate);
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c:src/xyz/marstonconnell/graphics/engine/LayerContainer.java
 			}
 		}
 	}

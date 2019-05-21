@@ -28,14 +28,10 @@ public class Entity extends AnimatedDrawable {
 			if (canCollideWith.get(i) instanceof Entity)
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-<<<<<<< HEAD
 					if (action != null) {
-						action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+						action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 					}
-=======
-					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c
 					return;
 				}
 		}
@@ -50,14 +46,10 @@ public class Entity extends AnimatedDrawable {
 			if (canCollideWith.get(i) instanceof Entity)
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-<<<<<<< HEAD
 					if (action != null) {
-						action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+						action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 					}
-=======
-					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c
 					return;
 				}
 		}
@@ -71,13 +63,9 @@ public class Entity extends AnimatedDrawable {
 			if (canCollideWith.get(i) instanceof Entity)
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-<<<<<<< HEAD
 					if (action != null) {
-						action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+						action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 					}
-=======
-					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c
 
 					return;
 				}
@@ -91,13 +79,9 @@ public class Entity extends AnimatedDrawable {
 		for (int i = 0; i < canCollideWith.size(); i++) {
 			if (canCollideWith.get(i) instanceof Entity)
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
-<<<<<<< HEAD
 					if (action != null) {
-						action.actionPerformed(new ActionEvent(this, 0, "collisionEvent"));
+						action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
 					}
-=======
-					action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
->>>>>>> b1ac4f943efd797a744b6a4914ea8c189e5c912c
 					return;
 				}
 		}
