@@ -11,6 +11,15 @@ import javax.imageio.ImageIO;
 public class Drawable extends Rectangle {
 
 	Image currentImage;
+	DrawingLayer dl;
+
+	public DrawingLayer getDl() {
+		return dl;
+	}
+
+	public void setDl(DrawingLayer dl) {
+		this.dl = dl;
+	}
 
 	public void moveLeft(int delta) {
 		this.x = this.x - delta;
@@ -42,14 +51,19 @@ public class Drawable extends Rectangle {
 
 		currentImage = image;
 	}
+	
+	
 
 	public Drawable(int x, int y, int width, int height, DrawingLayer drawingLayer) {
 		super(x, y, width, height);
 		drawingLayer.add(this);
+		this.dl = drawingLayer;
 	}
 
 	public Drawable(int x, int y, int size, DrawingLayer drawingLayer) {
 		super(x, y, size, size);
 		drawingLayer.add(this);
+		this.dl = drawingLayer;
+
 	}
 }

@@ -82,7 +82,7 @@ public class AnimatedDrawable extends Drawable {
 	
 	
 
-	public AnimatedDrawable(int x, int y, int size, double refreshTime, DrawingLayer drawingLayer) {
+	public AnimatedDrawable(int x, int y, int size, DrawingLayer drawingLayer, double refreshTime) {
 		this(x, y, size, size, refreshTime, drawingLayer);
 
 	}

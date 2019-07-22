@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import xyz.marstonconnell.graphics.GraphicsFrame;
+import xyz.marstonconnell.graphics.engine.EngineFrame;
 
 public class LayerContainer {
 	HashMap<Integer, DrawingLayer> layers;
@@ -56,6 +57,20 @@ public class LayerContainer {
 			}
 		}
 	}
+	
+	public void draw(Graphics2D g, EngineFrame f, boolean splitPhysAndGraphs) {
+		if (!layers.isEmpty()) {
+
+			Set<Integer> s = layers.keySet();
+			List<Integer> ls = new ArrayList<Integer>(s);
+			Collections.sort(ls);
+
+			for (int x = 0; x < ls.size(); x++) {
+				layers.get(ls.get(x)).draw(g, (int) ((f.getWidth() / 2 - ((f.getGameWidth() / 2) * resizeRate))), (int) (((f.getHeight() + f.getInsets().top + f.getInsets().bottom) / 2 - ((f.getGameHeight() / 2) * resizeRate))) - f.getInsets().bottom, resizeRate);
+			}
+			
+		}
+	}
 
 	public void draw(Graphics2D g) {
 		if (!layers.isEmpty()) {
@@ -68,9 +83,20 @@ public class LayerContainer {
 				layers.get(ls.get(x)).draw(g, resizeRate);
 			}
 			
-			for(int x = 0; x < ls.size(); x ++) {
-				layers.get(ls.get(x)).draw(g, resizeRate);
+		}
+	}
+
+	public void updateParticles(Graphics2D g, EngineFrame f, List<Drawable> blackList) {
+		if (!layers.isEmpty()) {
+
+			Set<Integer> s = layers.keySet();
+			List<Integer> ls = new ArrayList<Integer>(s);
+			Collections.sort(ls);
+
+			for (int x = 0; x < ls.size(); x++) {
+				layers.get(ls.get(x)).updateParticles(g, (int) ((f.getWidth() / 2 - ((f.getGameWidth() / 2) * resizeRate))), (int) (((f.getHeight() + f.getInsets().top + f.getInsets().bottom) / 2 - ((f.getGameHeight() / 2) * resizeRate))) - f.getInsets().bottom, resizeRate, blackList);
 			}
+			
 		}
 	}
 

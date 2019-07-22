@@ -8,13 +8,14 @@ import java.util.List;
 import xyz.marstonconnell.graphics.engine.drawing.AnimatedDrawable;
 import xyz.marstonconnell.graphics.engine.drawing.Drawable;
 import xyz.marstonconnell.graphics.engine.drawing.DrawingLayer;
+import xyz.marstonconnell.graphics.engine.drawing.Particle;
 
 public class Entity extends AnimatedDrawable {
 
 	ActionListener action;
 
 	public Entity(int x, int y, int width, int height, DrawingLayer drawingLayer) {
-		super(x, y, width, height, drawingLayer);
+		super(x, y, width, height, 100, drawingLayer);
 	}
 
 	public Entity(int x, int y, int size, DrawingLayer drawingLayer) {
@@ -25,7 +26,7 @@ public class Entity extends AnimatedDrawable {
 		Rectangle proposed = new Rectangle(this.x - delta, this.y, this.width, this.height);
 
 		for (int i = 0; i < canCollideWith.size(); i++) {
-			if (canCollideWith.get(i) instanceof Entity)
+			if (canCollideWith.get(i) instanceof Entity && !(canCollideWith.get(i) instanceof Particle))
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
 					if (action != null) {
@@ -43,7 +44,7 @@ public class Entity extends AnimatedDrawable {
 		Rectangle proposed = new Rectangle(this.x + delta, this.y, this.width, this.height);
 
 		for (int i = 0; i < canCollideWith.size(); i++) {
-			if (canCollideWith.get(i) instanceof Entity)
+			if (canCollideWith.get(i) instanceof Entity && !(canCollideWith.get(i) instanceof Particle))
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
 					if (action != null) {
@@ -60,7 +61,7 @@ public class Entity extends AnimatedDrawable {
 		Rectangle proposed = new Rectangle(this.x, this.y - delta, this.width, this.height);
 
 		for (int i = 0; i < canCollideWith.size(); i++) {
-			if (canCollideWith.get(i) instanceof Entity)
+			if (canCollideWith.get(i) instanceof Entity && !(canCollideWith.get(i) instanceof Particle))
 
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
 					if (action != null) {
@@ -77,7 +78,7 @@ public class Entity extends AnimatedDrawable {
 		Rectangle proposed = new Rectangle(this.x, this.y + delta, this.width, this.height);
 
 		for (int i = 0; i < canCollideWith.size(); i++) {
-			if (canCollideWith.get(i) instanceof Entity)
+			if (canCollideWith.get(i) instanceof Entity && !(canCollideWith.get(i) instanceof Particle))
 				if (proposed.intersects(canCollideWith.get(i)) && !canCollideWith.get(i).equals(this)) {
 					if (action != null) {
 						action.actionPerformed(new ActionEvent(canCollideWith.get(i), 0, "collisionEvent"));
