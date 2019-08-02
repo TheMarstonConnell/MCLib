@@ -21,7 +21,7 @@ public class ChoiceDialog extends TextDialog {
 	}
 
 	@Override
-	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate) {
+	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate, int width, int height) {
 		super.draw(g, resizeRate);
 		g.setFont(font);
 

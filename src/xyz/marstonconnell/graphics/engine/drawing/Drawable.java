@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Drawable extends Rectangle {
 
-	Image currentImage;
+	protected Image currentImage;
 	DrawingLayer dl;
 
 	public DrawingLayer getDl() {

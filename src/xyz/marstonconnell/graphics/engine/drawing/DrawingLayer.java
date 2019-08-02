@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DrawingLayer {
 	List<Drawable> drawings;
+	boolean particleLayer = false;
 
 	public List<Drawable> getDrawables() {
 		return drawings;
@@ -38,21 +39,24 @@ public class DrawingLayer {
 		}
 	}
 
-	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate) {
+	public void draw(Graphics2D g, int leftOffset, int topOffset, double resizeRate, int width, int height) {
 		if (!drawings.isEmpty()) {
 			for (int x = 0; x < drawings.size(); x++) {
 				Drawable d = drawings.get(x);
 
-				if (d instanceof DrawingLine) {
-					DrawingLine dl = (DrawingLine) d;
-					g.setColor(dl.getColor());
-					g.drawLine((int) (dl.x1 * resizeRate) + leftOffset, (int) (dl.y1 * resizeRate) + topOffset,
-							(int) (dl.x2 * resizeRate), (int) (dl.x2 * resizeRate));
-					continue;
-				}
+				if (d.x + d.width > 0 && d.x < width && d.y + d.height > 0 && d.y < height) {
+					if (d instanceof DrawingLine) {
+						DrawingLine dl = (DrawingLine) d;
+						g.setColor(dl.getColor());
+						g.drawLine((int) (dl.x1 * resizeRate) + leftOffset, (int) (dl.y1 * resizeRate) + topOffset,
+								(int) (dl.x2 * resizeRate), (int) (dl.x2 * resizeRate));
+						continue;
+					}
 
-				g.drawImage(d.currentImage, (int) (d.x * resizeRate) + leftOffset, (int) (d.y * resizeRate) + topOffset,
-						(int) (d.width * resizeRate), (int) (d.height * resizeRate), null);
+					g.drawImage(d.currentImage, (int) (d.x * resizeRate) + leftOffset,
+							(int) (d.y * resizeRate) + topOffset, (int) (d.width * resizeRate),
+							(int) (d.height * resizeRate), null);
+				}
 			}
 		}
 	}
@@ -78,5 +82,10 @@ public class DrawingLayer {
 
 		}
 
+	}
+
+	public boolean isParticleLayer() {
+		// TODO Auto-generated method stub
+		return particleLayer;
 	}
 }

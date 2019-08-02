@@ -19,6 +19,7 @@ public class AnimatedDrawable extends Drawable {
 	HashMap<String, AnimationState> states;
 	AnimationState currentState;
 	int currentIndex = 0;
+	boolean isLadder = false;
 
 	public AnimatedDrawable(int x, int y, int width, int height, double refreshTime, DrawingLayer drawingLayer) {
 		super(x, y, width, height, drawingLayer);
@@ -85,6 +86,10 @@ public class AnimatedDrawable extends Drawable {
 	public AnimatedDrawable(int x, int y, int size, DrawingLayer drawingLayer, double refreshTime) {
 		this(x, y, size, size, refreshTime, drawingLayer);
 
+	}
+
+	public boolean isLadder() {
+		return isLadder;
 	}
 
 }

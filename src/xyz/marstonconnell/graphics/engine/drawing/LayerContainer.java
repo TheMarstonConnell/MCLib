@@ -13,6 +13,7 @@ import xyz.marstonconnell.graphics.engine.EngineFrame;
 public class LayerContainer {
 	HashMap<Integer, DrawingLayer> layers;
 	public double resizeRate = 1;
+
 	public LayerContainer(double resizeRate) {
 		this.resizeRate = resizeRate;
 		layers = new HashMap<Integer, DrawingLayer>();
@@ -36,11 +37,10 @@ public class LayerContainer {
 		return -1;
 	}
 
-	
 	public void setResizeRate(double rate) {
 		this.resizeRate = rate;
 	}
-	
+
 	public void draw(Graphics2D g, GraphicsFrame f) {
 		if (!layers.isEmpty()) {
 
@@ -49,15 +49,15 @@ public class LayerContainer {
 			Collections.sort(ls);
 
 			for (int x = 0; x < ls.size(); x++) {
-				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate);
+				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate, f.width, f.height);
 			}
-			
-			for(int x = 0; x < ls.size(); x ++) {
-				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate);
-			}
+
+//			for (int x = 0; x < ls.size(); x++) {
+//				layers.get(ls.get(x)).draw(g, f.getInsets().left, f.getInsets().top, resizeRate, f.width, f.height);
+//			}
 		}
 	}
-	
+
 	public void draw(Graphics2D g, EngineFrame f, boolean splitPhysAndGraphs) {
 		if (!layers.isEmpty()) {
 
@@ -66,9 +66,12 @@ public class LayerContainer {
 			Collections.sort(ls);
 
 			for (int x = 0; x < ls.size(); x++) {
-				layers.get(ls.get(x)).draw(g, (int) ((f.getWidth() / 2 - ((f.getGameWidth() / 2) * resizeRate))), (int) (((f.getHeight() + f.getInsets().top + f.getInsets().bottom) / 2 - ((f.getGameHeight() / 2) * resizeRate))) - f.getInsets().bottom, resizeRate);
+				layers.get(ls.get(x)).draw(g, (int) ((f.getWidth() / 2 - ((f.getGameWidth() / 2) * resizeRate))),
+						(int) (((f.getHeight() + f.getInsets().top + f.getInsets().bottom) / 2
+								- ((f.getGameHeight() / 2) * resizeRate))) - f.getInsets().bottom,
+						resizeRate, f.width, f.height);
 			}
-			
+
 		}
 	}
 
@@ -82,7 +85,7 @@ public class LayerContainer {
 			for (int x = 0; x < ls.size(); x++) {
 				layers.get(ls.get(x)).draw(g, resizeRate);
 			}
-			
+
 		}
 	}
 
@@ -94,9 +97,14 @@ public class LayerContainer {
 			Collections.sort(ls);
 
 			for (int x = 0; x < ls.size(); x++) {
-				layers.get(ls.get(x)).updateParticles(g, (int) ((f.getWidth() / 2 - ((f.getGameWidth() / 2) * resizeRate))), (int) (((f.getHeight() + f.getInsets().top + f.getInsets().bottom) / 2 - ((f.getGameHeight() / 2) * resizeRate))) - f.getInsets().bottom, resizeRate, blackList);
+				if (layers.get(ls.get(x)).isParticleLayer())
+					layers.get(ls.get(x)).updateParticles(g,
+							(int) ((f.getWidth() / 2 - ((f.getGameWidth() / 2) * resizeRate))),
+							(int) (((f.getHeight() + f.getInsets().top + f.getInsets().bottom) / 2
+									- ((f.getGameHeight() / 2) * resizeRate))) - f.getInsets().bottom,
+							resizeRate, blackList);
 			}
-			
+
 		}
 	}
 
