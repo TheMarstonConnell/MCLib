@@ -1,11 +1,13 @@
 package xyz.marstonconnell.testing;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import xyz.marstonconnell.graphics.components.shapes.DrawableEllipse;
 import xyz.marstonconnell.graphics.engine.EngineFrame;
 import xyz.marstonconnell.graphics.engine.drawing.Drawable;
 import xyz.marstonconnell.graphics.engine.drawing.DrawingLayer;
@@ -32,6 +34,8 @@ public class testing {
 		Entity draw = new Entity(0, 0, 100, dl);
 		Entity draw2 = new Entity(300, 300, 200, dl);
 
+		DrawableEllipse square = new DrawableEllipse(50, 40, 50, 20, dl, true, Color.blue, Color.blue);
+		
 		draw.createState("still", 2, 0.5, testing.class);
 		draw2.createState("still", 2, 0.8, testing.class);
 
